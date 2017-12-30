@@ -1,0 +1,39 @@
+plugins {
+    id "io.spring.dependency-management" version "0.5.4.RELEASE"
+    id "com.jfrog.bintray" version "1.2"
+}
+
+group   "org.grails.plugins"
+version "1.2.15-SNAPSHOT"
+
+integrationTest.onlyIf{false} //FIXME
+
+dependencyManagement {
+    imports {
+        mavenBom "org.grails:grails-bom:$grailsVersion"
+    }
+    applyMavenExclusions false
+}
+
+repositories {
+	maven{
+		url 'https://raw.github.com/eburtsev/gdata-maven/master/'
+	}
+}
+
+dependencies {
+//    compile  "org.grails:grails-logging"
+
+    compile("commons-io:commons-io:2.4")
+    compile("org.grails.plugins:http-builder-helper:1.1.0"){
+        exclude group: "org.codehaus.groovy.modules.http-builder", module: "http-builder"
+    }
+
+    provided project(":plugins:grails-webxml")
+
+    runtime('org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'){
+        exclude group: 'org.codehaus.groovy'
+        exclude group: 'net.sourceforge.nekohtml', module: 'nekohtml'
+    }
+
+}

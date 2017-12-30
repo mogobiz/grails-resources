@@ -25,3 +25,4 @@ dependencies.groovy
 /src/docs/ref/Resources/
 *.swp
 
+build

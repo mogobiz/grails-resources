@@ -12,6 +12,8 @@ import org.grails.plugin.resource.mapper.MapperPhase
  *
  * @author Marc Palmer (marc@grailsrocks.com)
  */
+import groovy.util.logging.Log4j
+@Log4j
 class BundleResourceMapper {
     
     def phase = MapperPhase.AGGREGATION
